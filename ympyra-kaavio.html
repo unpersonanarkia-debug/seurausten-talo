@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seurausten talo – Ympyräkaavio</title>
+    <meta name="description" content="Seurausten talon ympyräkaavio: päätöksen elinkaari kuutena vaiheena kehällä. Versio 1 – kohti 30×30-rakennetta.">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; background: #f5f5f5; }
+        header { text-align: center; background: #2c3e50; color: white; padding: 30px; border-radius: 10px; }
+        header h1 { margin-bottom: 5px; }
+        header h2 { margin-top: 0; font-weight: normal; opacity: 0.9; }
+        .nav { display: flex; justify-content: center; gap: 20px; margin: 20px 0; flex-wrap: wrap; }
+        .nav a { padding: 10px 20px; background: #3498db; color: white; text-decoration: none; border-radius: 5px; }
+        .nav a:hover { background: #2980b9; }
+        .section { margin: 30px 0; }
+        .section h2 { text-align: center; color: #2c3e50; }
+        .section p { text-align: center; }
+
+        .circle-wrapper { display: flex; flex-direction: column; align-items: center; }
+        svg { max-width: 500px; height: auto; }
+
+        .phase-label { font-size: 12px; fill: #2c3e50; font-weight: bold; }
+        .phase-node { fill: #e74c3c; cursor: pointer; }
+        .phase-node:hover { fill: #c0392b; }
+
+        .legend { max-width: 700px; margin: 20px auto; background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
+        .legend h3 { margin-top: 0; text-align: center; }
+        .legend ul { padding-left: 20px; }
+
+        footer { text-align: center; margin-top: 40px; color: #7f8c8d; }
+
+        @media (max-width: 768px) {
+            header { padding: 20px 15px; }
+            svg { max-width: 320px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Seurausten talo</h1>
+        <h2>Ympyräkaavio – Versio 1</h2>
+        <p>Päätöksen elinkaari kuutena vaiheena kehällä – askel kohti 30×30-rakennetta.</p>
+    </header>
+
+    <nav class="nav">
+        <a href="index.html">Etusivu</a>
+        <a href="toggle-lista.html">Toggle-lista</a>
+        <a href="ympyra-kaavio.html">Ympyräkaavio</a>
+        <a href="ascii-kaavio.html">ASCII-ympyräkaavio</a>
+        <a href="valmis-pohja.html">Valmis pohja</a>
+        <a href="ympyra-virtaus.html">Ympyrävirtaus</a>
+    </nav>
+
+    <section class="section">
+        <h2>Päätöksen elinkaari: 6 vaihetta kehällä</h2>
+        <p>Tämä on ympyräkaavion ensimmäinen versio: 6 päävaihetta päätöksen elinkaaresta kehällä. Myöhemmin jokainen vaihe voi laajentua 30×30-rakenteeksi.</p>
+    </section>
+
+    <section class="section circle-wrapper">
+        <!-- Yksinkertainen 6-vaiheinen ympyräkaavio SVG:nä -->
+        <svg viewBox="0 0 400 400" aria-labelledby="title desc" role="img">
+            <title id="title">Päätöksen elinkaari – ympyräkaavio</title>
+            <desc id="desc">Kuusi vaihetta: Päätös, Vaikutus, Seuraukset, Sopeutuminen, Kertautuminen, Muutos normiksi.</desc>
+
+            <!-- Ympyrän tausta -->
+            <circle cx="200" cy="200" r="150" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="2" />
+
+            <!-- Keskiö -->
+            <circle cx="200" cy="200" r="40" fill="#2c3e50" />
+            <text x="200" y="195" text-anchor="middle" fill="#ecf0f1" font-size="14" font-weight="bold">PÄÄTÖKSEN</text>
+            <text x="200" y="213" text-anchor="middle" fill="#ecf0f1" font-size="14" font-weight="bold">ELINKAARI</text>
+
+            <!-- 6 vaihetta kehällä: piste + teksti -->
+            <!-- (1) PÄÄTÖS – ylhäällä -->
+            <circle class="phase-node" cx="200" cy="50" r="8" />
+            <text class="phase-label" x="200" y="30" text-anchor="middle">(1) PÄÄTÖS</text>
+
+            <!-- (2) VAIKUTUS – oikea ylä -->
+            <circle class="phase-node" cx="320" cy="110" r="8" />
+            <text class="phase-label" x="340" y="110">(2) VAIKUTUS</text>
+
+            <!-- (3) SEURAUKSET – oikea ala -->
+            <circle class="phase-node" cx="320" cy="290" r="8" />
+            <text class="phase-label" x="340" y="295">(3) SEURAUKSET</text>
+
+            <!-- (4) SOPEUTUMINEN – alhaalla -->
+            <circle class="phase-node" cx="200" cy="350" r="8" />
+            <text class="phase-label" x="200" y="375" text-anchor="middle">(4) SOPEUTUMINEN</text>
+
+            <!-- (5) KERTAUTUMINEN – vasen ala -->
+            <circle class="phase-node" cx="80" cy="290" r="8" />
+            <text class="phase-label" x="60" y="295" text-anchor="end">(5) KERTAUTUMINEN</text>
+
+            <!-- (6) MUUTOS NORMIKSI – vasen ylä -->
+            <circle class="phase-node" cx="80" cy="110" r="8" />
+            <text class="phase-label" x="60" y="110" text-anchor="end">(6) MUUTOS NORMIKSI</text>
+
+            <!-- Viivat vaiheiden välillä (kehän suuntaisesti) -->
+            <path d="M200,50 A150,150 0 0,1 320,110" fill="none" stroke="#7f8c8d" stroke-width="2" />
+            <path d="M320,110 A150,150 0 0,1 320,290" fill="none" stroke="#7f8c8d" stroke-width="2" />
+            <path d="M320,290 A150,150 0 0,1 200,350" fill="none" stroke="#7f8c8d" stroke-width="2" />
+            <path d="M200,350 A150,150 0 0,1 80,290" fill="none" stroke="#7f8c8d" stroke-width="2" />
+            <path d="M80,290 A150,150 0 0,1 80,110" fill="none" stroke="#7f8c8d" stroke-width="2" />
+            <path d="M80,110 A150,150 0 0,1 200,50" fill="none" stroke="#7f8c8d" stroke-width="2" />
+        </svg>
+    </section>
+
+    <section class="section legend">
+        <h3>Vaiheet (versio 1)</h3>
+        <ul>
+            <li><strong>(1) Päätös</strong> – jokin valinta, toimenpide tai linjaus tehdään.</li>
+            <li><strong>(2) Vaikutus</strong> – päätös alkaa näkyä konkreettisina muutoksina.</li>
+            <li><strong>(3) Seuraukset</strong> – vaikutuksista kertyy odottamattomia ja odotettuja seurauksia.</li>
+            <li><strong>(4) Sopeutuminen</strong> – toimijat muuttavat käytöstään seurauksien myötä.</li>
+            <li><strong>(5) Kertautuminen</strong> – samat rakenteet ja virheet alkavat toistaa itseään.</li>
+            <li><strong>(6) Muutos normiksi</strong> – alun perin poikkeava päätös muuttuu uudeksi normaaliksi.</li>
+        </ul>
+        <p>Tämä sivu on ympyräkaavion ensimmäinen versio. Myöhemmin kukin vaihe saa oman 30×30-rakenteensa ja erillisen vuokaavion.</p>
+    </section>
+
+    <footer>
+        <p>© 2026 Seurausten talo – Itseoppiva & autonominen muisti</p>
+    </footer>
+</body>
+</html>
