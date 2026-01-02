@@ -2,7 +2,10 @@
 <html lang="fi">
 <head>
   <meta charset="UTF-8">
-  <title>Seurausten talo – Päätöksen elinkaari</title>
+  <title>Seurausten talo – Päätöksen elinkaaren tarkastelu</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
       margin: 0;
@@ -19,6 +22,7 @@
       max-height: 90vh;
     }
 
+    /* Renkaat */
     .background-ring {
       fill: #fdfcf8;
       stroke: #d4c9b0;
@@ -26,17 +30,18 @@
     }
 
     .outer-ring {
+      fill: none;
       stroke: #1e3a5f;
       stroke-width: 8;
-      fill: none;
     }
 
     .inner-ring {
+      fill: none;
       stroke: #c9b491;
       stroke-width: 4;
-      fill: none;
     }
 
+    /* Sisäperiaate */
     .inner-text {
       font-size: 18px;
       fill: #8b6f47;
@@ -46,12 +51,12 @@
       pointer-events: none;
     }
 
-    /* Vaiheet */
+    /* Vaiheet – osuma-alue */
     .phase-hit {
       fill: #1e3a5f;
       opacity: 0.08;
-      transition: opacity 0.25s ease, r 0.25s ease;
       cursor: pointer;
+      transition: opacity 0.25s ease, r 0.25s ease;
     }
 
     .phase-group:hover .phase-hit {
@@ -92,16 +97,17 @@
     }
   </style>
 </head>
+
 <body>
 
 <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
 
-  <!-- Renkaat -->
+  <!-- Rakenteelliset renkaat -->
   <circle cx="400" cy="400" r="380" class="background-ring"/>
   <circle cx="400" cy="400" r="360" class="outer-ring"/>
   <circle cx="400" cy="400" r="240" class="inner-ring"/>
 
-  <!-- Kaareva teksti -->
+  <!-- Periaate: PÄÄTÖS • SEURAUS • AIKA -->
   <path id="innerCurve"
         d="M100,400
            A300,300 0 1,1 700,400
@@ -114,7 +120,7 @@
     </textPath>
   </text>
 
-  <!-- Keskitemppeli -->
+  <!-- Keskus: Seurausten talo -->
   <g transform="translate(400,400)">
     <rect x="-130" y="90" width="260" height="40" class="temple-base"/>
 
@@ -129,9 +135,8 @@
     <text x="0" y="160" class="temple-label">SEURAUSTEN TALO</text>
   </g>
 
-  <!-- Vaiheet (klikattavat) -->
+  <!-- Päätöksen elinkaaren vaiheet (navigaatio tulkintaan) -->
 
-  <!-- 1 -->
   <a href="ympyra-virtaus.html#phase-1">
     <g class="phase-group">
       <circle cx="400" cy="80" r="54" class="phase-hit"/>
@@ -139,7 +144,6 @@
     </g>
   </a>
 
-  <!-- 2 -->
   <a href="ympyra-virtaus.html#phase-2">
     <g class="phase-group" transform="rotate(60 400 400)">
       <circle cx="400" cy="80" r="54" class="phase-hit"/>
@@ -147,7 +151,6 @@
     </g>
   </a>
 
-  <!-- 3 -->
   <a href="ympyra-virtaus.html#phase-3">
     <g class="phase-group" transform="rotate(120 400 400)">
       <circle cx="400" cy="80" r="54" class="phase-hit"/>
@@ -155,7 +158,6 @@
     </g>
   </a>
 
-  <!-- 4 -->
   <a href="ympyra-virtaus.html#phase-4">
     <g class="phase-group" transform="rotate(180 400 400)">
       <circle cx="400" cy="80" r="54" class="phase-hit"/>
@@ -163,7 +165,6 @@
     </g>
   </a>
 
-  <!-- 5 -->
   <a href="ympyra-virtaus.html#phase-5">
     <g class="phase-group" transform="rotate(240 400 400)">
       <circle cx="400" cy="80" r="54" class="phase-hit"/>
@@ -171,7 +172,6 @@
     </g>
   </a>
 
-  <!-- 6 -->
   <a href="ympyra-virtaus.html#phase-6">
     <g class="phase-group" transform="rotate(300 400 400)">
       <circle cx="400" cy="80" r="54" class="phase-hit"/>
