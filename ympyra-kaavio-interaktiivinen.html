@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <title>Seurausten talo – Päätöksen elinkaari</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f8f5f0;
+      font-family: Georgia, serif;
+    }
+
+    svg {
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+
+    .background-ring {
+      fill: #fdfcf8;
+      stroke: #d4c9b0;
+      stroke-width: 4;
+    }
+
+    .outer-ring {
+      stroke: #1e3a5f;
+      stroke-width: 8;
+      fill: none;
+    }
+
+    .inner-ring {
+      stroke: #c9b491;
+      stroke-width: 4;
+      fill: none;
+    }
+
+    .inner-text {
+      font-size: 18px;
+      fill: #8b6f47;
+      font-style: italic;
+      font-weight: bold;
+      letter-spacing: 1px;
+      pointer-events: none;
+    }
+
+    /* Vaiheet */
+    .phase-hit {
+      fill: #1e3a5f;
+      opacity: 0.08;
+      transition: opacity 0.25s ease, r 0.25s ease;
+      cursor: pointer;
+    }
+
+    .phase-group:hover .phase-hit {
+      opacity: 0.25;
+      r: 62;
+    }
+
+    .phase-text {
+      font-size: 18px;
+      font-weight: bold;
+      fill: #1e3a5f;
+      text-anchor: middle;
+      dominant-baseline: middle;
+      pointer-events: none;
+    }
+
+    /* Temppeli */
+    .temple-base {
+      fill: #e8e2d9;
+      stroke: #c9b491;
+      stroke-width: 3;
+    }
+
+    .temple-column {
+      fill: #d4c9b0;
+    }
+
+    .temple-roof {
+      fill: #c9b491;
+    }
+
+    .temple-label {
+      font-size: 14px;
+      fill: #555;
+      text-anchor: middle;
+      letter-spacing: 2px;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+<svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Renkaat -->
+  <circle cx="400" cy="400" r="380" class="background-ring"/>
+  <circle cx="400" cy="400" r="360" class="outer-ring"/>
+  <circle cx="400" cy="400" r="240" class="inner-ring"/>
+
+  <!-- Kaareva teksti -->
+  <path id="innerCurve"
+        d="M100,400
+           A300,300 0 1,1 700,400
+           A300,300 0 1,1 100,400"
+        fill="none"/>
+
+  <text class="inner-text">
+    <textPath href="#innerCurve" startOffset="50%" text-anchor="middle">
+      PÄÄTÖS • SEURAUS • AIKA
+    </textPath>
+  </text>
+
+  <!-- Keskitemppeli -->
+  <g transform="translate(400,400)">
+    <rect x="-130" y="90" width="260" height="40" class="temple-base"/>
+
+    <rect x="-110" y="-80" width="30" height="170" class="temple-column"/>
+    <rect x="-55"  y="-80" width="30" height="170" class="temple-column"/>
+    <rect x="0"    y="-80" width="30" height="170" class="temple-column"/>
+    <rect x="55"   y="-80" width="30" height="170" class="temple-column"/>
+    <rect x="110"  y="-80" width="30" height="170" class="temple-column"/>
+
+    <polygon points="-150,-80 0,-140 150,-80" class="temple-roof"/>
+
+    <text x="0" y="160" class="temple-label">SEURAUSTEN TALO</text>
+  </g>
+
+  <!-- Vaiheet (klikattavat) -->
+
+  <!-- 1 -->
+  <a href="ympyra-virtaus.html#phase-1">
+    <g class="phase-group">
+      <circle cx="400" cy="80" r="54" class="phase-hit"/>
+      <text x="400" y="80" class="phase-text">1. Päätös</text>
+    </g>
+  </a>
+
+  <!-- 2 -->
+  <a href="ympyra-virtaus.html#phase-2">
+    <g class="phase-group" transform="rotate(60 400 400)">
+      <circle cx="400" cy="80" r="54" class="phase-hit"/>
+      <text x="400" y="80" class="phase-text">2. Vaikutus</text>
+    </g>
+  </a>
+
+  <!-- 3 -->
+  <a href="ympyra-virtaus.html#phase-3">
+    <g class="phase-group" transform="rotate(120 400 400)">
+      <circle cx="400" cy="80" r="54" class="phase-hit"/>
+      <text x="400" y="80" class="phase-text">3. Seuraukset</text>
+    </g>
+  </a>
+
+  <!-- 4 -->
+  <a href="ympyra-virtaus.html#phase-4">
+    <g class="phase-group" transform="rotate(180 400 400)">
+      <circle cx="400" cy="80" r="54" class="phase-hit"/>
+      <text x="400" y="80" class="phase-text">4. Sopeutuminen</text>
+    </g>
+  </a>
+
+  <!-- 5 -->
+  <a href="ympyra-virtaus.html#phase-5">
+    <g class="phase-group" transform="rotate(240 400 400)">
+      <circle cx="400" cy="80" r="54" class="phase-hit"/>
+      <text x="400" y="80" class="phase-text">5. Kertautuminen</text>
+    </g>
+  </a>
+
+  <!-- 6 -->
+  <a href="ympyra-virtaus.html#phase-6">
+    <g class="phase-group" transform="rotate(300 400 400)">
+      <circle cx="400" cy="80" r="54" class="phase-hit"/>
+      <text x="400" y="80" class="phase-text">6. Normalisoituminen</text>
+    </g>
+  </a>
+
+</svg>
+
+</body>
+</html>
