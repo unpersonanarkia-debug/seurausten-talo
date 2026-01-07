@@ -1,0 +1,57 @@
+{
+  "casebooks": {
+    "subprime2008": {
+      "nodes": [
+        {"data": {"id": "0", "label": "Päätös: Subprime-lainat"}},
+        {"data": {"id": "1", "label": "Vaikutus: Asuntokupla"}},
+        {"data": {"id": "2", "label": "Seuraukset: 9M työpaikkaa menetettiin"}},
+        {"data": {"id": "3", "label": "Sopeutuminen: Dodd-Frank laki"}},
+        {"data": {"id": "4", "label": "Kertautuminen: Euroopan velkakriisi"}},
+        {"data": {"id": "5", "label": "Normiksi: Riskilainat 'kasvun moottori'"}}
+      ],
+      "edges": [
+        {"data": {"source": "0", "target": "1", "label": "sosiaalinen", "weight": 0.9}},
+        {"data": {"source": "1", "target": "2", "label": "hallinto", "weight": 1.0}},
+        {"data": {"source": "4", "target": "5", "label": "henkinen", "weight": 0.95}}
+      ],
+      "impacts": {
+        "2": {"sosiaalinen": "Luottamus pankkeihin romahti", "hallinto": "Globaali taantuma"}
+      }
+    },
+    "kreikka_velka": {
+      "nodes": [
+        {"data": {"id": "0", "label": "Päätös: Massiivinen velanotto"}},
+        {"data": {"id": "1", "label": "Vaikutus: Talouskasvu"}},
+        {"data": {"id": "2", "label": "Seuraukset: 27% työttömyys"}},
+        {"data": {"id": "3", "label": "Sopeutuminen: Austerity"}},
+        {"data": {"id": "4", "label": "Kertautuminen: Eurokriisi"}},
+        {"data": {"id": "5", "label": "Normiksi: Velka 'väliaikaista'"}}
+      ],
+      "edges": [
+        {"data": {"source": "0", "target": "1", "label": "hallinto", "weight": 0.85}},
+        {"data": {"source": "2", "target": "5", "label": "sosiaalinen", "weight": 1.0}}
+      ]
+    },
+    "krypto2022": {
+      "nodes": [
+        {"data": {"id": "0", "label": "Päätös: Kryptohype"}},
+        {"data": {"id": "1", "label": "Vaikutus: $2T arvonnousu"}},
+        {"data": {"id": "2", "label": "Seuraukset: 60% romahdus"}},
+        {"data": {"id": "5", "label": "Normiksi: 'Korkean riskin' sijoitus"}}
+      ],
+      "edges": [
+        {"data": {"source": "0", "target": "2", "label": "sosiaalinen", "weight": 0.9}}
+      ]
+    },
+    "enron": {
+      "nodes": [
+        {"data": {"id": "0", "label": "Päätös: Kirjanpitotemput"}},
+        {"data": {"id": "2", "label": "Seuraukset: $74B tappiot"}},
+        {"data": {"id": "5", "label": "Normiksi: SOX-laki"}}
+      ],
+      "edges": [
+        {"data": {"source": "0", "target": "2", "label": "hallinto", "weight": 1.0}}
+      ]
+    }
+  }
+}
