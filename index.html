@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <script src="https://unpkg.com/cytoscape/dist/cytoscape.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seurausten talo</title>
+  <script src="https://unpkg.com/cytoscape@3.23.0/dist/cytoscape.min.js"></script>
   <style>
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -28,7 +31,6 @@
       text-decoration: underline;
     }
 
-    /* UUSI: Graafi-osio */
     .graph-section {
       margin: 2rem 0;
       padding: 1.5rem;
@@ -89,7 +91,6 @@
       overflow-x: auto;
     }
   </style>
-
 </head>
 
 <body>
@@ -97,38 +98,7 @@
   <h1>Seurausten talo</h1>
   <h2>Se instituutio, jota ei ollut olemassa</h2>
 
-  <p>
-    Seurausten talo on paikka, jossa teot jatkuvat ajan läpi.
-  </p>
-
-  <p>
-    Ihmiskunta osaa rakentaa välineitä – valtioita, markkinoita, teknologiaa –
-    mutta ei vielä rakenteita, jotka tekisivät ihmisestä kypsän käyttämään niitä.
-  </p>
-
-  <p>
-    Meillä on historiaa, arkistoja ja dataa enemmän kuin koskaan, mutta puuttuu
-    institutionaalinen muistijärjestelmä, joka pakottaisi oppimaan aiemmista
-    virheistä ja estäisi samojen kriisien toistamisen eri nimillä.
-  </p>
-
-  <blockquote>
-    Seurausten talo on ehdotus tällaisesta instituutiosta.<br />
-    Se ei tuomitse, ei säädä lakeja, ei estä päätöksiä.<br />
-    Se vain tekee näkyväksi, mitä päätöksistä seuraa ajan kuluessa.
-  </blockquote>
-
-  <!-- Alkuperäinen navigaatio säilyy -->
-  <nav>
-    <a href="toggle-lista.html">Rakennekehikko</a>
-    <a href="ympyra-kaavio.html">Ympyräkaavio (rakenne)</a>
-    <a href="ascii-ympyra.html">ASCII-ympyrä (tekstimuotoinen)</a>
-    <a href="ympyra-kaavio-interaktiivinen.html">Päätöksen elinkaaren tarkastelu</a>
-    <a href="valmis-pohja.html">Staattinen kaavio (valmis)</a>
-    <a href="ympyra-virtaus.html">Päätöksen elinkaaren vaiheet</a>
-  </nav>
-
-  <!-- UUSI: Graafi-demo osio -->
+  <!-- GRAAFI YLHÄÄLLÄ HEADERIN JÄLKEEN -->
   <div class="graph-section">
     <h3>🎮 Interaktiivinen H.O.C. demo</h3>
     <p>Testaa päätösten elinkaarta reaaliaikaisilla case-esimerkeillä:</p>
@@ -152,7 +122,37 @@
     <div id="cy"></div>
   </div>
 
-  <!-- Alkuperäinen sisältö säilyy -->
+  <!-- TEKSTIT GRAAFIN JÄLKEEN -->
+  <p>
+    Seurausten talo on paikka, jossa teot jatkuvat ajan läpi.
+  </p>
+
+  <p>
+    Ihmiskunta osaa rakentaa välineitä – valtioita, markkinoita, teknologiaa –
+    mutta ei vielä rakenteita, jotka tekisivät ihmisestä kypsän käyttämään niitä.
+  </p>
+
+  <p>
+    Meillä on historiaa, arkistoja ja dataa enemmän kuin koskaan, mutta puuttuu
+    institutionaalinen muistijärjestelmä, joka pakottaisi oppimaan aiemmista
+    virheistä ja estäisi samojen kriisien toistamisen eri nimillä.
+  </p>
+
+  <blockquote>
+    Seurausten talo on ehdotus tällaisesta instituutiosta.<br />
+    Se ei tuomitse, ei säädä lakeja, ei estä päätöksiä.<br />
+    Se vain tekee näkyväksi, mitä päätöksistä seuraa ajan kuluessa.
+  </blockquote>
+
+  <nav>
+    <a href="toggle-lista.html">Rakennekehikko</a>
+    <a href="ympyra-kaavio.html">Ympyräkaavio (rakenne)</a>
+    <a href="ascii-ympyra.html">ASCII-ympyrä (tekstimuotoinen)</a>
+    <a href="ympyra-kaavio-interaktiivinen.html">Päätöksen elinkaaren tarkastelu</a>
+    <a href="valmis-pohja.html">Staattinen kaavio (valmis)</a>
+    <a href="ympyra-virtaus.html">Päätöksen elinkaaren vaiheet</a>
+  </nav>
+
   <h2>Päätöksen elinkaari</h2>
 
   <pre>
@@ -182,7 +182,6 @@
     © 2026 Seurausten talo – itseoppiva &amp; autonominen muisti
   </footer>
 
-  <!-- UUSI: Graafi-skripti inline -->
   <script>
     let cy;
     
@@ -227,10 +226,8 @@
       }
     }
     
-    // Alustus
     document.addEventListener('DOMContentLoaded', () => {
       initCytoscape();
-      // Lataa ensimmäinen case
       setTimeout(loadCase, 500);
     });
   </script>
