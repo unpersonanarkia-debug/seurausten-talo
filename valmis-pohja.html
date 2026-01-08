@@ -1,122 +1,246 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seurausten talo – Valmis pohja</title>
-    <meta name="description" content="Valmis pohja päätöksen elinkaaren kirjaamiseen: päätös, vaikutus, seuraukset, sopeutuminen, kertautuminen, muutos normiksi.">
-    <style>
-        body { font-family: Arial, sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; background: #f5f5f5; }
-        header { text-align: center; background: #2c3e50; color: white; padding: 30px; border-radius: 10px; }
-        header h1 { margin-bottom: 5px; }
-        header h2 { margin-top: 0; font-weight: normal; opacity: 0.9; }
+  <meta charset="UTF-8" />
+  <title>House of Consequences – Seurausten talo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        .nav { display: flex; justify-content: center; gap: 20px; margin: 20px 0; flex-wrap: wrap; }
-        .nav a { padding: 10px 20px; background: #3498db; color: white; text-decoration: none; border-radius: 5px; }
-        .nav a:hover { background: #2980b9; }
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f4f4f6;
+      margin: 0;
+      padding: 0;
+      color: #1a1a1a;
+    }
 
-        .section { margin: 30px 0; }
-        .section h2 { text-align: center; color: #2c3e50; }
-        .section p { text-align: center; }
+    header {
+      background: #111;
+      color: #fff;
+      padding: 2rem;
+    }
 
-        .case-wrapper { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); max-width: 900px; margin: 0 auto 40px auto; }
-        .case-meta { margin-bottom: 20px; }
-        .case-meta label { display: block; font-weight: bold; margin-top: 10px; }
-        .case-meta input, .case-meta textarea { width: 100%; padding: 8px; margin-top: 4px; border-radius: 4px; border: 1px solid #ccc; box-sizing: border-box; }
+    header h1 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.8rem;
+    }
 
-        .phase { margin-top: 20px; padding-top: 10px; border-top: 1px solid #eee; }
-        .phase h3 { margin-bottom: 5px; color: #2c3e50; }
-        .phase small { display: block; margin-bottom: 8px; color: #7f8c8d; }
-        .phase textarea { width: 100%; min-height: 90px; padding: 8px; border-radius: 4px; border: 1px solid #ccc; box-sizing: border-box; }
+    header p {
+      margin: 0;
+      opacity: 0.9;
+      max-width: 800px;
+    }
 
-        .note { font-size: 0.9em; color: #7f8c8d; margin-top: 10px; }
+    main {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
 
-        footer { text-align: center; margin-top: 40px; color: #7f8c8d; }
+    section {
+      background: #fff;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
 
-        @media (max-width: 768px) {
-            header { padding: 20px 15px; }
-            .case-wrapper { padding: 15px; margin: 0 5px 30px 5px; }
-        }
-    </style>
+    section h2 {
+      margin-top: 0;
+      font-size: 1.3rem;
+    }
+
+    .lifecycle {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .stage {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 1rem;
+      background: #fafafa;
+    }
+
+    .stage strong {
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    form label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 0.6rem;
+      margin-top: 0.3rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 0.95rem;
+    }
+
+    form textarea {
+      min-height: 120px;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      padding: 0.7rem 1.2rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background: #111;
+      color: #fff;
+    }
+
+    button:hover {
+      background: #333;
+    }
+
+    #submitStatus {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.85rem;
+      color: #555;
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <h1>Seurausten talo</h1>
-        <h2>Valmis pohja – Päätöksen elinkaari</h2>
-        <p>Tällä pohjalla voit jäsentää yhden päätöksen elinkaaren: päätöksestä siihen, miten se muuttuu normiksi – tai epäonnistuu matkalla.</p>
-    </header>
 
-    <nav class="nav">
-        <a href="index.html">Etusivu</a>
-        <a href="toggle-lista.html">Toggle-lista</a>
-        <a href="ympyra-kaavio.html">Ympyräkaavio</a>
-        <a href="ascii-kaavio.html">ASCII-ympyräkaavio</a>
-        <a href="valmis-pohja.html">Valmis pohja</a>
-        <a href="ympyra-virtaus.html">Ympyrävirtaus</a>
-    </nav>
+<header>
+  <h1>House of Consequences</h1>
+  <p>
+    Seurausten talo tekee näkyväksi päätösketjut ja niiden ennustettavat seuraukset.
+    Tämä ei ole raportointijärjestelmä. Tämä on peili järjestelmälle.
+  </p>
+</header>
 
-    <section class="section">
-        <h2>Päätöscase: kirjauspohja</h2>
-        <p>
-            Pohja on tarkoitettu sekä historiallisiin että nykyisiin päätöksiin: lainsäädäntöön, strategisiin linjauksiin, teknologisiin valintoihin, instituutioiden syntyyn tai niiden purkamiseen.
-        </p>
-    </section>
+<main>
 
-    <section class="section">
-        <div class="case-wrapper">
-            <div class="case-meta">
-                <label for="case-title">Päätöksen nimi / otsikko</label>
-                <input id="case-title" type="text" placeholder="Esim. &quot;X-lain uudistus&quot; tai &quot;Y-järjestelmän käyttöönotto&quot;">
+  <section>
+    <h2>Päätöksen elinkaari (6 vaihetta)</h2>
 
-                <label for="case-context">Konteksti</label>
-                <textarea id="case-context" placeholder="Missä, milloin ja minkälaisen tilanteen keskellä päätös tehtiin?"></textarea>
+    <div class="lifecycle">
+      <div class="stage">
+        <strong>1. Trigger</strong>
+        Ulkoinen tai sisäinen tapahtuma, joka vaatii reagointia.
+      </div>
 
-                <label for="case-actors">Toimijat</label>
-                <textarea id="case-actors" placeholder="Kuka tai ketkä päätöksen tekivät, keihin se kohdistui, keitä se sivusi?"></textarea>
-            </div>
+      <div class="stage">
+        <strong>2. Interpretation</strong>
+        Miten tilanne tulkitaan organisaatiossa.
+      </div>
 
-            <div class="phase">
-                <h3>(1) Päätös</h3>
-                <small>Mikä päätös tehtiin? Millä perusteilla? Mitä luvattiin tai oletettiin?</small>
-                <textarea placeholder="Kuvaile ydinsisältö: mitä päätettiin, mille aikavälille, ja millä julkisilla tai piilevillä perusteluilla."></textarea>
-            </div>
+      <div class="stage">
+        <strong>3. Decision</strong>
+        Varsinainen päätös tai tekemättä jättäminen.
+      </div>
 
-            <div class="phase">
-                <h3>(2) Vaikutus</h3>
-                <small>Mitä konkreettisesti muuttui heti tai lyhyellä aikavälillä?</small>
-                <textarea placeholder="Kirjaa näkyvät muutokset: rakenteelliset, taloudelliset, kulttuuriset, symboliset, tekniset jne."></textarea>
-            </div>
+      <div class="stage">
+        <strong>4. Immediate Consequence</strong>
+        Välitön seuraus päätöksestä.
+      </div>
 
-            <div class="phase">
-                <h3>(3) Seuraukset</h3>
-                <small>Mitkä olivat odotetut ja odottamattomat seuraukset?</small>
-                <textarea placeholder="Mitä tapahtui seurauksina – hyötyä, haittaa, sivuvaikutuksia, tahattomia vinoumia, kerrannaisvaikutuksia."></textarea>
-            </div>
+      <div class="stage">
+        <strong>5. Recursive Effect</strong>
+        Kertautuvat ja epäsuorat vaikutukset.
+      </div>
 
-            <div class="phase">
-                <h3>(4) Sopeutuminen</h3>
-                <small>Miten ihmiset, instituutiot ja järjestelmät alkoivat sopeutua seurauksiin?</small>
-                <textarea placeholder="Mitä sopeutumista seuraukset synnyttivät: käytännöt, rutiinit, vastareaktiot, kiertotiet."></textarea>
-            </div>
+      <div class="stage">
+        <strong>6. Normalized State</strong>
+        Uusi normaali – tila, jota ei enää kyseenalaisteta.
+      </div>
+    </div>
+  </section>
 
-            <div class="phase">
-                <h3>(5) Kertautuminen</h3>
-                <small>Missä kohdissa rakenteet ja virheet alkoivat toistaa itseään?</small>
-                <textarea placeholder="Kirjaa toistuvat kuviot: miten sama ongelma palaa, millaisia uusia kriisejä se synnyttää, miten se näkyy myöhemmissä päätöksissä."></textarea>
-            </div>
+  <section>
+    <h2>Lisää havainto tai tulkinta</h2>
 
-            <div class="phase">
-                <h3>(6) Muutos normiksi</h3>
-                <small>Miten alun perin poikkeava päätös muuttui normaaliksi – vai muuttuiko?</small>
-                <textarea placeholder="Onko päätöksestä tullut &quot;uusi normaali&quot;? Millä tasolla (arkipäivä, instituutiot, lainsäädäntö, mielikuvat)? Vai onko se torjuttu, unohtunut, purettu?"></textarea>
-            </div>
+    <p>
+      Tämä lomake on tarkoitettu rakenteellisten ilmiöiden hahmottamiseen.
+      Tietoja ei lähetetä palvelimelle.
+    </p>
 
-            <p class="note">
-                Tämä pohja toimii toistettavana yksikkönä: jokainen päätös voidaan kirjata saman rakenteen läpi ja liittää Seurausten talon 30×30-karttaan myöhemmässä vaiheessa.
-            </p>
-        </div>
-    </section>
+    <form id="consequenceForm">
 
+      <label for="inputName">Nimi / rooli (vapaaehtoinen)</label>
+      <input type="text" id="inputName" placeholder="Esim. kehittäjä, analyytikko" />
+
+      <label for="inputEmail">Sähköposti (vapaaehtoinen)</label>
+      <input type="email" id="inputEmail" placeholder="vain jos haluat" />
+
+      <label for="inputComment">Havainto / tulkinta</label>
+      <textarea id="inputComment" placeholder="Mikä päätösketju, ilmiö tai seuraus on mielestäsi merkittävä?"></textarea>
+
+      <button type="button" id="btnSubmit">📤 Lähetä</button>
+
+      <p id="submitStatus"></p>
+    </form>
+  </section>
+
+</main>
+
+<footer>
+  House of Consequences • Staattinen demo • Data pysyy käyttäjän hallussa
+</footer>
+
+<script>
+  function collectFormData() {
+    return {
+      name: document.getElementById("inputName").value,
+      email: document.getElementById("inputEmail").value,
+      comment: document.getElementById("inputComment").value,
+      timestamp: new Date().toISOString()
+    };
+  }
+
+  function saveToLocalStorage(data) {
+    const key = "houseOfConsequencesSubmissions";
+    const existing = JSON.parse(localStorage.getItem(key)) || [];
+    existing.push(data);
+    localStorage.setItem(key, JSON.stringify(existing));
+  }
+
+  function downloadJSON(data) {
+    const blob = new Blob([JSON.stringify(data, null, 2)], {
+      type: "application/json"
+    });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "house-of-consequences-submission.json";
+    link.click();
+  }
+
+  document.getElementById("btnSubmit").addEventListener("click", () => {
+    const data = collectFormData();
+
+    if (!data.comment.trim()) {
+      document.getElementById("submitStatus").textContent =
+        "Kirjoita havainto ennen lähettämistä.";
+      return;
+    }
+
+    saveToLocalStorage(data);
+    downloadJSON(data);
+
+    document.getElementById("submitStatus").textContent =
+      "Tallennettu selaimeen ja ladattu JSON-tiedostona.";
+
+    document.getElementById("consequenceForm").reset();
+  });
+</script>
     <footer>
         <p>© 2026 Seurausten talo – Itseoppiva & autonominen muisti</p>
     </footer>
